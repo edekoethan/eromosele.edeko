@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Profile</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    <p>
+      Analytical and detail-oriented Data Science graduate student with strong experience in data 
+      collection, cleaning, and annotation. Skilled in Python, R, and Excel-based data workflows 
+      with a growing expertise in machine learning, AI model training, and data preprocessing. With a 
+      background in pharmacy and epidemiology, I bring a unique perspective to data analysis in healthcare.
+    </p>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="MSc Data Science"
+      subtitle="[2025] to [2027] at [University of Oulu], [Oulu], [Finland]"
+    />
+    <TimeLineElement
+      title="Bachelor of Pharmacy | Doctor of Pharmacy"
+      subtitle="[2015] to [2021] at [University of Benin], [Benin City], [Nigeria]"
+    />
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Data Collection and Annotation Specialist"
+      subtitle="From [2025] to [Current] at [ConsultBae], [Chennai], [India]"
+    >
+      <p>
+        Responsible for collecting and annotating data for various machine learning projects, ensuring high-quality and accurate datasets.
+      </p>
+    </TimeLineElement>
+    <TimeLineElement
+      title="Superintendent Pharmacist / Data manager"
+      subtitle="From [2023] to [2025] at [Community Pharmacy], [Benin City], [Nigeria]"
+    >
+      <p>
+        Managed pharmacy operations and data management tasks, ensuring compliance with regulations and optimizing workflows.
+      </p>
+    </TimeLineElement>
+    <TimeLineElement
+      title="Research Assistant (Public Health & Epidemiology)"
+      subtitle="Irrua Specialist Teaching Hospital, Nigeria | 2022–2023"
+    >
+      <ul class="list-disc ml-6">
+      <li>Collected and analyzed epidemiological data on Lassa fever prevalence and treatment outcomes.</li>
+      <li>Built digital data entry templates and automated calculations with R.</li>
+      <li>Co-developed Extempo-Plus, a compounding software that automated dose calculations and label printing.</li>
+      </ul>
+    </TimeLineElement>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Certifications</div>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li>
+      <a href="https://intranet.alxswe.com/certificates/LZfSP9zE3C" target="_blank"> Software Engineering Professional Certificate</a>
+    </li>
+    <li>
+      <a href="https://drive.google.com/file/d/1phoB2em7Uq_ARvpdayylueA09TzLBzRw/view?usp=sharing" target="_blank"> Doctor of Pharmacy Professional Certificate</a>
+    </li>
+
+    <li>
+      <a href="https://drive.google.com/file/d/1Xnf4zDnfAhN1ei8i__ae8CQTH9ZvvddL/view?usp=sharing" target="_blank"> Language Proficiency Certificate</a>
+  </ul>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Skills</div>
+  </div>
+
+  <ul class="list-disc md:columns-5 columns-2 mx-6">
+    <li>Python (Pandas, NumPy)</li>
+    <li>R</li>
+    <li>SQL</li>
+    <li>JavaScript</li>
+    <li>Excel</li>
+    <li>Google Sheets</li>
+    <li>Power BI</li>
+    <li>Labelbox</li>
+    <li>Roboflow</li>
+    <li>Scikit-learn</li>
+    <li>Regression</li>
+    <li>Hypothesis Testing</li>
+    <li>Data Visualization</li>
+    <li>Git / GitHub</li>
+  </ul>
+</BaseLayout>
