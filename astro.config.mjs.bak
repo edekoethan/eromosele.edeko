@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astrofy-template.netlify.app',
+  site: 'https://edekoethan.github.io/eromosele.edeko',
+  base: '/eromosele.edeko/',
   integrations: [mdx(), sitemap(), tailwind()]
 });
