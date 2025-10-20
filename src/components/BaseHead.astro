@@ -14,19 +14,30 @@ export interface Props {
 const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
 const resolvedImage = withBase(image);
 // Build an absolute canonical URL using SITE (set in astro.config.mjs) + the current path
-const siteOrigin = import.meta.env.SITE || '';
-const canonicalPath = Astro.url?.pathname || '/';
-const canonicalUrl = siteOrigin.endsWith('/')
-	? siteOrigin.slice(0, -1) + canonicalPath
-	: siteOrigin + canonicalPath;
+const siteOrigin = (import.meta.env.SITE || '').replace(/\/$/, '');
+const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const canonicalPathRaw = Astro.url?.pathname || '/';
+// If Astro.url.pathname already includes the base, strip it to avoid duplication
+const canonicalPath = canonicalPathRaw.startsWith(baseUrl)
+	? canonicalPathRaw.slice(baseUrl.length) || '/'
+	: canonicalPathRaw;
+const canonicalUrl = siteOrigin ? siteOrigin + canonicalPath : canonicalPath;
 // Ensure metaImage is a full absolute URL string we can use in meta tags.
 // If resolvedImage is empty (no image provided), fall back to the default social image.
 let metaImage: string;
 try {
 	if (resolvedImage) {
-		metaImage = new URL(resolvedImage, Astro.url).toString();
+		// If resolvedImage is already absolute (starts with http), URL(...) will keep it.
+		// If it's root-relative, ensure we resolve it against the site origin so meta image is absolute.
+		if (/^https?:\/\//.test(resolvedImage)) {
+			metaImage = resolvedImage;
+		} else if (siteOrigin) {
+			metaImage = siteOrigin + resolvedImage;
+		} else {
+			metaImage = new URL(resolvedImage, Astro.url).toString();
+		}
 	} else {
-		metaImage = new URL(withBase('/social_img.webp'), Astro.url).toString();
+		metaImage = siteOrigin ? siteOrigin + withBase('/social_img.webp') : new URL(withBase('/social_img.webp'), Astro.url).toString();
 	}
 } catch (e) {
 	// Fallback: use absolute path to social image on the configured site
