@@ -66,7 +66,7 @@ background in pharmacy and epidemiology, I bring a unique perspective to data an
           title={post.data.title}
           img={post.data.heroImage}
           desc={post.data.description}
-          url={withBase("/blog/" + createSlug(post.data.title, post.slug))}
+          url={"/blog/" + createSlug(post.data.title, post.slug)}
           target="_self"
           badge={post.data.badge}
         />
