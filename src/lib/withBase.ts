@@ -1,5 +1,6 @@
-export default function withBase(url?: string) {
-  if (!url) return url;
+export default function withBase(url?: string): string {
+  // Always return a string (never undefined) to satisfy Image typing.
+  if (!url) return "";
   // leave remote urls alone
   if (/^https?:\/\//.test(url)) return url;
 
