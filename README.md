@@ -201,6 +201,18 @@ heroImage: "Post Hero Image URL"
 ---
 ```
 
+## GitHub Pages (deployed repo)
+
+This project is configured to publish to GitHub Pages under the repository name `eromosele.edeko2`.
+
+- The site's `site` and `base` were updated in `astro.config.mjs` to:
+  - site: `https://edekoethan.github.io/eromosele.edeko2`
+  - base: `/eromosele.edeko2/`
+
+- A GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) is included and will build and deploy the `dist/` output to GitHub Pages on pushes to `main`.
+
+If you change the repository name or publish to a different domain, update `astro.config.mjs` accordingly.
+
 ### Pages
 
 #### Blog

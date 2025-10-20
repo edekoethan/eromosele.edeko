@@ -5,7 +5,8 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://edekoethan.github.io/eromosele.edeko',
-  base: '/eromosele.edeko/',
+  // Updated for GitHub Pages repository `eromosele.edeko2`
+  site: 'https://edekoethan.github.io/eromosele.edeko2',
+  base: '/eromosele.edeko2/',
   integrations: [mdx(), sitemap(), tailwind()]
 });

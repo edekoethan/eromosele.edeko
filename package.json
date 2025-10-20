@@ -7,9 +7,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+  "build": "astro build",
+  "prebuild": "pnpm run verify:images",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "verify:images": "node ./scripts/verify-images.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.0.3",

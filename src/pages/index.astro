@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
+import withBase from "../lib/withBase";
 import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug"
 
@@ -33,7 +34,7 @@ background in pharmacy and epidemiology, I bring a unique perspective to data an
 
   <HorizontalCard
     title="Hospital Readmissions Prediction"
-    img="/hospital_image.png"
+    img={withBase('/hospital_image.png')}
     desc="Hospital Readmissions Prediction Project using Machine Learning techniques to predict patient readmissions."
     url="#https://github.com/edekoethan/Hospital_readmissions-"
     badge="NEW"
@@ -41,14 +42,14 @@ background in pharmacy and epidemiology, I bring a unique perspective to data an
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Extempo Plus"
-    img="/extempo_plus_image.png"
+    img={withBase('/extempo_plus_image.png')}
     desc="Extempo Plus is a web-based application designed to assist users in managing their time and tasks more effectively."
     url="https://edekoethan.github.io/extempo-plus/"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="School Files MSC Data Science"
-    img="/school_github_image.png"
+    img={withBase('/school_github_image.png')}
     desc="School Files MSC Data Science is a collection of academic materials and resources for students pursuing a Master's degree in Data Science."
     url="https://github.com/edekoethan/School_Files_MSC_Data_Science"
     badge="FOSS"
