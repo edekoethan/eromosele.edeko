@@ -14,59 +14,42 @@ jobs:
     runs-on: ubuntu-latest
     name: Install, build and upload
     steps:
-      name: Build and deploy to GitHub Pages
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      on:
-        push:
-          branches: [ main ]
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-      permissions:
-        contents: read
-        pages: write
-        id-token: write
+      - name: Enable Corepack and prepare pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
 
-      jobs:
-        build:
-          runs-on: ubuntu-latest
-          name: Install, build and upload
-          steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                node-version: '18'
+      - name: Verify frontmatter image references
+        run: pnpm run verify:images
 
-            - name: Enable Corepack and prepare pnpm
-              run: corepack enable && corepack prepare pnpm@latest --activate
+      - name: Build site
+        run: pnpm run build
 
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
+      - name: Show dist contents (diagnostic)
+        run: |
+          echo "Listing dist directory"
+          ls -la ./dist || true
+          echo "Size of dist"
+          du -sh ./dist || true
 
-            - name: Verify frontmatter image references
-              run: pnpm run verify:images
+      - name: Upload build (dist) for Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
 
-            - name: Build site
-              run: pnpm run build
-
-            - name: Show dist contents (diagnostic)
-              run: |
-                echo "Listing dist directory"
-                ls -la ./dist || true
-                echo "Size of dist"
-                du -sh ./dist || true
-
-            - name: Upload build (dist) for Pages
-              uses: actions/upload-pages-artifact@v1
-              with:
-                path: ./dist
-
-        deploy:
-          needs: build
-          runs-on: ubuntu-latest
-          name: Deploy to GitHub Pages
-          steps:
-            - name: Deploy to GitHub Pages
-              uses: actions/deploy-pages@v1
-      - uses: actions/checkout@v4
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy to GitHub Pages
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
