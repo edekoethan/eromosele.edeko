@@ -50,6 +50,13 @@ jobs:
             - name: Build site
               run: pnpm run build
 
+            - name: Show dist contents (diagnostic)
+              run: |
+                echo "Listing dist directory"
+                ls -la ./dist || true
+                echo "Size of dist"
+                du -sh ./dist || true
+
             - name: Upload build (dist) for Pages
               uses: actions/upload-pages-artifact@v1
               with:
