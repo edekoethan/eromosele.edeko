@@ -13,6 +13,12 @@ export interface Props {
 
 const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
 const resolvedImage = withBase(image);
+// Build an absolute canonical URL using SITE (set in astro.config.mjs) + the current path
+const siteOrigin = import.meta.env.SITE || '';
+const canonicalPath = Astro.url?.pathname || '/';
+const canonicalUrl = siteOrigin.endsWith('/')
+	? siteOrigin.slice(0, -1) + canonicalPath
+	: siteOrigin + canonicalPath;
 // Ensure metaImage is a full absolute URL string we can use in meta tags.
 // If resolvedImage is empty (no image provided), fall back to the default social image.
 let metaImage: string;
@@ -41,14 +47,15 @@ try {
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
-<meta property="og:url" content={Astro.url} />
+	<meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={metaImage} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+	<meta property="twitter:url" content={canonicalUrl} />
+	<link rel="canonical" href={canonicalUrl} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={metaImage} />
