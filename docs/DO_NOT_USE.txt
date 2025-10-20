@@ -1,0 +1,7 @@
+THIS FOLDER IS DEPRECATED
+
+The generated `docs/` site was snapshot and moved to `docs-stale/` to avoid GitHub Pages serving stale output.
+
+Please switch GitHub Pages to use GitHub Actions artifacts (Settings → Pages → Build and deployment → GitHub Actions) and then re-run the workflow.
+
+If you need the old files restored, use the copies in `docs-stale/` or restore from git history.

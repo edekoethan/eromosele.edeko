@@ -2,7 +2,10 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    # Run when main or the deploy branch is updated so CI deploys the artifact
+    branches: [ main, 'deploy/pages-eromosele-edeko2' ]
+  # Allow manual reruns from the Actions UI
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -40,6 +43,18 @@ jobs:
           ls -la ./dist || true
           echo "Size of dist"
           du -sh ./dist || true
+
+      - name: Check for existing docs/ folder (possible Pages conflict)
+        run: |
+          if [ -d docs ]; then
+            echo "WARNING: repo contains a 'docs/' directory. GitHub Pages may be serving that instead of this workflow's artifact."
+            echo "Listing docs/ contents:"
+            ls -la docs || true
+            echo "A quick check for hard-coded base paths inside docs/ (show first matches):"
+            grep -m 10 -R "href=\"/eromosele.edeko\"\|/eromosele.edeko/\|/eromosele.edeko2/\|src=\"/" docs || true
+          else
+            echo "No docs/ directory detected."
+          fi
 
       - name: Upload build (dist) for Pages
         uses: actions/upload-pages-artifact@v1

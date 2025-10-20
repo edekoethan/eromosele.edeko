@@ -13,6 +13,19 @@ export interface Props {
 
 const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
 const resolvedImage = withBase(image);
+// Ensure metaImage is a full absolute URL string we can use in meta tags.
+// If resolvedImage is empty (no image provided), fall back to the default social image.
+let metaImage: string;
+try {
+	if (resolvedImage) {
+		metaImage = new URL(resolvedImage, Astro.url).toString();
+	} else {
+		metaImage = new URL(withBase('/social_img.webp'), Astro.url).toString();
+	}
+} catch (e) {
+	// Fallback: use absolute path to social image on the configured site
+	metaImage = `${Astro.url.pathname || ''}${withBase('/social_img.webp')}`;
+}
 ---
 
 <!-- Global Metadata -->
@@ -31,11 +44,11 @@ const resolvedImage = withBase(image);
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(resolvedImage, Astro.url)} />
+<meta property="og:image" content={metaImage} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(resolvedImage, Astro.url)} />
+<meta property="twitter:image" content={metaImage} />
