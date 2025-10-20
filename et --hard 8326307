@@ -1,0 +1,33 @@
+[33m89ddcd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdeploy/pages-eromosele-edeko2[m[33m, [m[1;31meromosele2/deploy/pages-eromosele-edeko2[m[33m, [m[1;31meromosele2/HEAD[m[33m)[m HEAD@{0}: pull: Merge made by the 'ort' strategy.
+[33m02ee92b[m HEAD@{1}: commit: final fix
+[33m8c57914[m[33m ([m[1;31morigin/deploy/pages-eromosele-edeko2[m[33m)[m HEAD@{2}: commit: fix(post): guard heroImage and remove stray comma in PostLayout props
+[33mc51eaea[m HEAD@{3}: commit: ci(pages): set deployment environment for deploy job (github-pages)
+[33m4568374[m HEAD@{4}: commit: chore(pages): move committed docs/ into docs-stale/ to prefer Actions-deployed artifact
+[33m067df8d[m HEAD@{5}: commit: minor commit
+[33m6e8aca4[m HEAD@{6}: commit: chore(pages): deprecate docs/ and preserve snapshot in docs-stale
+[33m2e8bd71[m HEAD@{7}: commit: fix(types): ensure withBase returns string + add image fallback
+[33m6c34bab[m HEAD@{8}: commit: ci: fix workflow YAML structure and keep dist diagnostic
+[33m18f66ed[m HEAD@{9}: commit: fix(ci): unregister stale service workers and clear caches on load
+[33m9c88fd2[m HEAD@{10}: commit: ci: add dist diagnostic ls before upload
+[33m7e0439d[m HEAD@{11}: commit: chore(ci): trigger Pages redeploy
+[33ma620a0c[m HEAD@{12}: commit: chore(pages): add PR body file for GitHub PR
+[33mca88efb[m HEAD@{13}: commit: chore: configure GitHub Pages for eromosele.edeko2 (update site/base + workflow)
+[33m8326307[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{14}: checkout: moving from main to deploy/pages-eromosele-edeko2
+[33m8326307[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{15}: checkout: moving from main to main
+[33m8326307[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{16}: checkout: moving from main to main
+[33m8326307[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{17}: checkout: moving from main to main
+[33m8326307[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{18}: commit: added assets to src
+[33m278a2f3[m HEAD@{19}: checkout: moving from main to main
+[33m278a2f3[m HEAD@{20}: checkout: moving from main to main
+[33m278a2f3[m HEAD@{21}: commit: fix pics
+[33m79d102b[m HEAD@{22}: commit: Add Pages deploy workflow
+[33m6346917[m HEAD@{23}: checkout: moving from main to main
+[33m6346917[m HEAD@{24}: checkout: moving from main to main
+[33m6346917[m HEAD@{25}: commit: path manipulation
+[33m1b787be[m HEAD@{26}: commit: Publish site: add build output to docs
+[33m22121c9[m HEAD@{27}: commit: Set Astro base and site for GitHub Pages
+[33mca7936d[m HEAD@{28}: checkout: moving from main to main
+[33mca7936d[m HEAD@{29}: commit: Publish site: add build output
+[33mc78bfaf[m HEAD@{30}: pull origin main: Fast-forward
+[33m8799259[m HEAD@{31}: checkout: moving from main to main
+[33m8799259[m HEAD@{32}: commit (initial): all files
